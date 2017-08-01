@@ -1,3 +1,5 @@
-googleSearch
+exampleRevent
+exampleRevent2
 idle:
-googleSearch
+exampleRevent
+idleOnlyRevent

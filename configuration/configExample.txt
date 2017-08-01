@@ -3,9 +3,8 @@ HOST: root@10.1.194.69
 reventPath: /data/Software/workload-automation/wlauto/common/bin/armeabi/revent
 targetReventPath: /mnt/stateful_partition/apps
 waPath: /usr/local/bin/wa
-waCount: 2
+waCount: 0
 #waCount is the number of times wa has run
 captureCount: 0
 #needed to name default revents if no name is specified
 #Below are variables used for naming wa output folders for specific revents
-googleSearch: 2
