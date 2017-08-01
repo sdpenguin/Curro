@@ -1,0 +1,8 @@
+wa/*
+revents/*
+traces/*
+configuration/*
+!configuration/configExample.txt
+!configuration/README
+!configuration/reventsExample.txt
+!configuration/waAgendaExample.yaml

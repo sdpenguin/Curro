@@ -1,0 +1,179 @@
+config:
+        project: Testing the chromebook
+        run_name: WorkloadRun
+
+        device: generic_linux
+        device_config:
+                host: 10.1.194.69
+                username: root
+                working_directory: /mnt/stateful_partition/wa_working
+        reboot_policy: never
+        instrumentation: [trace_cmd,sysfs_extractor]
+        sysfs_extractor:
+                paths: []
+        trace_cmd:
+                buffer_size: 65536
+                report: False
+global:
+        iterations: 1
+sections:
+        - id: perf_all_cores
+          runtime_params:
+                sysfile_values:
+                        /sys/devices/system/cpu/cpu0/online: 1
+                        /sys/devices/system/cpu/cpu1/online: 1
+                        /sys/devices/system/cpu/cpu2/online: 1
+                        /sys/devices/system/cpu/cpu3/online: 1
+                        /sys/devices/system/cpu/cpu4/online: 1
+                        /sys/devices/system/cpu/cpu5/online: 1
+                        /sys/devices/system/cpu/cpufreq/policy0/scaling_governor: performance
+                        /sys/devices/system/cpu/cpufreq/policy4/scaling_governor: performance
+        - id: power_all_cores
+          runtime_params:
+                sysfile_values:
+                        /sys/devices/system/cpu/cpu0/online: 1
+                        /sys/devices/system/cpu/cpu1/online: 1
+                        /sys/devices/system/cpu/cpu2/online: 1
+                        /sys/devices/system/cpu/cpu3/online: 1
+                        /sys/devices/system/cpu/cpu4/online: 1
+                        /sys/devices/system/cpu/cpu5/online: 1
+                        /sys/devices/system/cpu/cpufreq/policy0/scaling_governor: powersave
+                        /sys/devices/system/cpu/cpufreq/policy4/scaling_governor: powersave
+        - id: sched_all_cores
+          runtime_params:
+                sysfile_values:
+                        /sys/devices/system/cpu/cpu0/online: 1
+                        /sys/devices/system/cpu/cpu1/online: 1
+                        /sys/devices/system/cpu/cpu2/online: 1
+                        /sys/devices/system/cpu/cpu3/online: 1
+                        /sys/devices/system/cpu/cpu4/online: 1
+                        /sys/devices/system/cpu/cpu5/online: 1
+                        /sys/devices/system/cpu/cpufreq/policy0/scaling_governor: sched
+                        /sys/devices/system/cpu/cpufreq/policy4/scaling_governor: sched
+        - id: perf_little_cores
+          runtime_params:
+                sysfile_values:
+                        /sys/devices/system/cpu/cpu0/online: 1
+                        /sys/devices/system/cpu/cpu1/online: 1
+                        /sys/devices/system/cpu/cpu2/online: 1
+                        /sys/devices/system/cpu/cpu3/online: 1
+                        /sys/devices/system/cpu/cpu4/online: 0
+                        /sys/devices/system/cpu/cpu5/online: 0
+                        /sys/devices/system/cpu/cpufreq/policy0/scaling_governor: performance      
+        - id: perf_big_cores
+          runtime_params:
+                sysfile_values:
+                        /sys/devices/system/cpu/cpu4/online: 1
+                        /sys/devices/system/cpu/cpu5/online: 1
+                        /sys/devices/system/cpu/cpu0/online: 0
+                        /sys/devices/system/cpu/cpu1/online: 0
+                        /sys/devices/system/cpu/cpu2/online: 0
+                        /sys/devices/system/cpu/cpu3/online: 0
+                        /sys/devices/system/cpu/cpufreq/policy4/scaling_governor: performance
+        - id: perf_little_single
+          runtime_params:
+                sysfile_values:
+                        /sys/devices/system/cpu/cpu0/online: 1
+                        /sys/devices/system/cpu/cpu1/online: 0
+                        /sys/devices/system/cpu/cpu2/online: 0
+                        /sys/devices/system/cpu/cpu3/online: 0
+                        /sys/devices/system/cpu/cpu4/online: 0
+                        /sys/devices/system/cpu/cpu5/online: 0
+                        /sys/devices/system/cpu/cpufreq/policy0/scaling_governor: performance      
+        - id: perf_big_single
+          runtime_params:
+                sysfile_values:
+                        /sys/devices/system/cpu/cpu4/online: 1
+                        /sys/devices/system/cpu/cpu5/online: 0
+                        /sys/devices/system/cpu/cpu0/online: 0
+                        /sys/devices/system/cpu/cpu1/online: 0
+                        /sys/devices/system/cpu/cpu2/online: 0
+                        /sys/devices/system/cpu/cpu3/online: 0
+                        /sys/devices/system/cpu/cpufreq/policy4/scaling_governor: performance
+        - id: power_little_cores
+          runtime_params:
+                sysfile_values:
+                        /sys/devices/system/cpu/cpu0/online: 1
+                        /sys/devices/system/cpu/cpu1/online: 1
+                        /sys/devices/system/cpu/cpu2/online: 1
+                        /sys/devices/system/cpu/cpu3/online: 1
+                        /sys/devices/system/cpu/cpu4/online: 0
+                        /sys/devices/system/cpu/cpu5/online: 0
+                        /sys/devices/system/cpu/cpufreq/policy0/scaling_governor: powersave     
+        - id: power_big_cores
+          runtime_params:
+                sysfile_values:
+                        /sys/devices/system/cpu/cpu4/online: 1
+                        /sys/devices/system/cpu/cpu5/online: 1
+                        /sys/devices/system/cpu/cpu0/online: 0
+                        /sys/devices/system/cpu/cpu1/online: 0
+                        /sys/devices/system/cpu/cpu2/online: 0
+                        /sys/devices/system/cpu/cpu3/online: 0
+                        /sys/devices/system/cpu/cpufreq/policy4/scaling_governor: powersave
+        - id: power_little_single
+          runtime_params:
+                sysfile_values:
+                        /sys/devices/system/cpu/cpu0/online: 1
+                        /sys/devices/system/cpu/cpu1/online: 0
+                        /sys/devices/system/cpu/cpu2/online: 0
+                        /sys/devices/system/cpu/cpu3/online: 0
+                        /sys/devices/system/cpu/cpu4/online: 0
+                        /sys/devices/system/cpu/cpu5/online: 0
+                        /sys/devices/system/cpu/cpufreq/policy0/scaling_governor: powersave      
+        - id: power_big_single
+          runtime_params:
+                sysfile_values:
+                        /sys/devices/system/cpu/cpu4/online: 1
+                        /sys/devices/system/cpu/cpu5/online: 0
+                        /sys/devices/system/cpu/cpu0/online: 0
+                        /sys/devices/system/cpu/cpu1/online: 0
+                        /sys/devices/system/cpu/cpu2/online: 0
+                        /sys/devices/system/cpu/cpu3/online: 0
+                        /sys/devices/system/cpu/cpufreq/policy4/scaling_governor: sched
+        - id: sched_little_cores
+          runtime_params:
+                sysfile_values:
+                        /sys/devices/system/cpu/cpu0/online: 1
+                        /sys/devices/system/cpu/cpu1/online: 1
+                        /sys/devices/system/cpu/cpu2/online: 1
+                        /sys/devices/system/cpu/cpu3/online: 1
+                        /sys/devices/system/cpu/cpu4/online: 0
+                        /sys/devices/system/cpu/cpu5/online: 0
+                        /sys/devices/system/cpu/cpufreq/policy0/scaling_governor: sched     
+        - id: sched_big_cores
+          runtime_params:
+                sysfile_values:
+                        /sys/devices/system/cpu/cpu4/online: 1
+                        /sys/devices/system/cpu/cpu5/online: 1
+                        /sys/devices/system/cpu/cpu0/online: 0
+                        /sys/devices/system/cpu/cpu1/online: 0
+                        /sys/devices/system/cpu/cpu2/online: 0
+                        /sys/devices/system/cpu/cpu3/online: 0
+                        /sys/devices/system/cpu/cpufreq/policy4/scaling_governor: sched
+        - id: sched_little_single
+          runtime_params:
+                sysfile_values:
+                        /sys/devices/system/cpu/cpu0/online: 1
+                        /sys/devices/system/cpu/cpu1/online: 0
+                        /sys/devices/system/cpu/cpu2/online: 0
+                        /sys/devices/system/cpu/cpu3/online: 0
+                        /sys/devices/system/cpu/cpu4/online: 0
+                        /sys/devices/system/cpu/cpu5/online: 0
+                        /sys/devices/system/cpu/cpufreq/policy0/scaling_governor: sched      
+        - id: sched_big_single
+          runtime_params:
+                sysfile_values:
+                        /sys/devices/system/cpu/cpu4/online: 1
+                        /sys/devices/system/cpu/cpu5/online: 0
+                        /sys/devices/system/cpu/cpu0/online: 0
+                        /sys/devices/system/cpu/cpu1/online: 0
+                        /sys/devices/system/cpu/cpu2/online: 0
+                        /sys/devices/system/cpu/cpu3/online: 0
+                        /sys/devices/system/cpu/cpufreq/policy4/scaling_governor: powersave
+workloads:
+        - id: revent
+          name: idleRevent
+          workload_params:
+                reventFileName: "recordingPlaceholder"
+                reventFilePath: "/this/is/an/example/Curro/"
+                idletime: 10

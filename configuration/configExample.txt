@@ -1,0 +1,11 @@
+#set curroPath in curro.py to use a different working directory - useful for creating multiple, separate Curros
+HOST: root@10.1.194.69
+reventPath: /data/Software/workload-automation/wlauto/common/bin/armeabi/revent
+targetReventPath: /mnt/stateful_partition/apps
+waPath: /usr/local/bin/wa
+waCount: 2
+#waCount is the number of times wa has run
+captureCount: 0
+#needed to name default revents if no name is specified
+#Below are variables used for naming wa output folders for specific revents
+googleSearch: 2

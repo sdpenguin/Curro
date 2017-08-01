@@ -1,0 +1,31 @@
+Please have wa installed to use wareplay
+
+PARAMETERS:
+
+First specify at least the following parameters at the top of the config file:
+curroPath
+HOST
+reventPath
+targetReventPath
+waPath
+
+Please specify folder names without an ending /
+HOST is the username and IP or network address of the device to be connected to. Note that you must set up ssh for passwordless connection in order for many functions to work correctly, including wa
+Specify reventPath as the path to the folder containing the revent binary on your machine
+Specify targetReventPath as the folder you want revent to be copied into on the device, rather than a file name
+Specify waPath as the path to the wa command on your machine. It is not currently used and it is expected that you will add the folder containing the wa command to your PATH variable. You can test this by typing 'wa' at the terminal.
+
+Every time wa runs a single workload it will increment waCount.
+A new entry will be created for every separately named revent you run using wareplay, to use for naming the output folders.
+
+SETUP:
+
+Then create your wa workload, making sure to only keep one workload as in the waAgenda (blueprint).txt file
+For each revent you can create 3 different files:
+reventFile
+reventFile.setup
+reventFile.close
+Specify the revents you want to run in revents.txt, first the names of revents to run normally and then idle workloads, where the setup will be run and then the machine will sit idle for a specified period, then finally the .close will be run. Note that a reventFile must exist for wa to work - i.e. you cannot run an idle workload without the main revent file, even though it is not necesssary.
+However, it is possible to run both in idle mode and normal mode without setup or close files. Running in idle mode without a setup or close file will be equivalent to running an idle workload.
+Or if you only want to run a single revent then you can specify this as a command line parameter.
+
