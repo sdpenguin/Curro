@@ -6,3 +6,6 @@ configuration/*
 !configuration/README
 !configuration/reventsExample.txt
 !configuration/waAgendaExample.yaml
+!traces/.gitkeep
+!wa/.gitkeep
+!revents/.gitkeep
