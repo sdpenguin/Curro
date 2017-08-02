@@ -47,9 +47,9 @@ def configParse(curroPath, *args):
                 break
 
         if(argumentValues[index][1]==False and currentOption.optionType=="numeric"): #Didn't find the config option so create it automatically
-            configContents = configContents + str((argument+": 0")) + "\n"
+            configContents =  "\n" + configContents + str((argument+": 0"))
         elif(argumentValues[index][1]==False and currentOption.optionType=="text"):
-            configContents = configContents + str((argument+": ")) + "\n"
+            configContents = "\n" + configContents + str((argument+": "))
 
         config.seek(0) #Update those config values that need updating
         if(currentOption.updateOnRun==True):
